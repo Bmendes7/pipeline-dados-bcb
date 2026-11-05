@@ -1,0 +1,19 @@
+# Ambiente virtual e caches do Python
+.venv/
+__pycache__/
+*.pyc
+
+# dbt
+target/
+dbt_packages/
+logs/
+
+# Segredos: nunca versionar
+.env
+*.json
+
+# Sistema e editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

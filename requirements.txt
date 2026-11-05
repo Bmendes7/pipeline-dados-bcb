@@ -1,0 +1,7 @@
+# Passos 5 e 6 (extract/):
+# requests
+# pandas
+# pyarrow
+# google-cloud-bigquery
+# Passo 7 (dbt/):
+# dbt-bigquery
