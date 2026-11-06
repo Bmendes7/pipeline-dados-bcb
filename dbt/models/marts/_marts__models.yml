@@ -1,0 +1,37 @@
+version: 2
+models:
+  - name: dim_serie
+    description: Uma linha por série do SGS usada no projeto.
+    columns:
+      - name: serie_id
+        data_tests: [not_null, unique]
+  - name: dim_data
+    description: Calendário, uma linha por dia.
+    columns:
+      - name: data_id
+        data_tests: [not_null, unique]
+  - name: fct_indicadores
+    description: Valor de cada indicador por série e data (granularidade série + data).
+    columns:
+      - name: indicador_id
+        data_tests: [not_null, unique]
+      - name: serie_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_serie')
+                field: serie_id
+          - accepted_values:
+              arguments:
+                values: [1, 432, 433]
+                quote: false
+      - name: data_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_data')
+                field: data_id
+      - name: valor
+        data_tests: [not_null]

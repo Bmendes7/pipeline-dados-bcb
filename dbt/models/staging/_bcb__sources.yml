@@ -1,0 +1,7 @@
+version: 2
+sources:
+  - name: raw
+    schema: raw
+    tables:
+    - name: bcb_series
+      description: Séries do SGS do Banco Central, carga bruta feita pelo script python.
