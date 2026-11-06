@@ -190,7 +190,7 @@ pipeline-dados-bcb/
 ### 1. Ambiente Python
 
 ```bash
-git clone https://github.com/SEU_USUARIO/pipeline-dados-bcb.git
+git clone https://github.com/bmendes7/pipeline-dados-bcb.git
 cd pipeline-dados-bcb
 python -m venv .venv
 
@@ -199,7 +199,7 @@ python -m venv .venv
 # Linux ou Mac
 source .venv/bin/activate
 
-pip install requests pandas pyarrow google-cloud-bigquery dbt-bigquery
+pip install -r requirements.txt
 ```
 
 ### 2. Google Cloud
