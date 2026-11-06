@@ -1,0 +1,7 @@
+version: 2
+seeds:
+  - name: series_bcb
+    description: Cadastro das séries do SGS usadas no projeto.
+    columns:
+      - name: serie_id
+        data_tests: [not_null, unique]

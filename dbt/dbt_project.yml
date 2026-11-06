@@ -36,3 +36,7 @@ models:
       +materialized: view
     marts:
       +materialized: view
+seeds:
+  bcb:
+    +column_types:
+      serie_id: int64
