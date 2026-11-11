@@ -16,4 +16,9 @@ logs/
 .DS_Store
 Thumbs.db
 .vscode/
-.idea/
+.idea/airflow/.env
+airflow/secrets/
+airflow/logs/
+dbt/target/
+dbt/logs/
+airflow/config/
