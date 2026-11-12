@@ -18,7 +18,11 @@ def buscar_bloco(codigo, inicio, fim, tentativas=3):
         try:
             resp = requests.get(URL.format(codigo=codigo), params=params, timeout=30)
             resp.raise_for_status()
-            return resp.json()
+            if resp.status_code != 200 or not resp.text.strip():
+                raise RuntimeError(
+                    f'BCB respondeu {resp.status_code} em {resp.url}: {resp.text[:200]!r}'
+                )
+            return resp.json() 
         except requests.RequestException:
             if n == tentativas:
                 raise

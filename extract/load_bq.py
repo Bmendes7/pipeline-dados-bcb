@@ -17,8 +17,10 @@ def carregar(df):
     client = bigquery.Client(project=PROJECT)
     config = bigquery.LoadJobConfig(schema=SCHEMA, write_disposition='WRITE_TRUNCATE')
     client.load_table_from_dataframe(df, TABELA, job_config=config).result()
-    print(f'{client.get_table(TABELA).num_rows} linhas em {TABELA}')
-    
+    print(f'{client.get_table(TABELA).num_rows} linhas em {TABELA}')  
+
+def main():
+    carregar(extrair())
     
 if __name__ == '__main__':
-    carregar(extrair())
+    main()
