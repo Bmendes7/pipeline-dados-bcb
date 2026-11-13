@@ -66,7 +66,7 @@ x-airflow-common:
     GCP_PROJECT: ${GCP_PROJECT}
     DBT_PROFILES_DIR: /opt/airflow/dbt_profiles
     GOOGLE_APPLICATION_CREDENTIALS: /opt/airflow/secrets/gcp-sa.json
-    TEAMS_WEBHOOK_URL: ${TEAMS_WEBHOOK_URL:-}
+    ALERT_WEBHOOK_URL: ${ALERT_WEBHOOK_URL:-}
     RETRY_DELAY_SEC: ${RETRY_DELAY_SEC:-300}
     AIRFLOW__CORE__EXECUTION_API_SERVER_URL: 'http://airflow-apiserver:8080/execution/'
     AIRFLOW__API_AUTH__JWT_SECRET: ${AIRFLOW__API_AUTH__JWT_SECRET:-airflow_jwt_secret}
