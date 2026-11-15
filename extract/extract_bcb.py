@@ -16,7 +16,7 @@ def buscar_bloco(codigo, inicio, fim, tentativas=3):
         ini = inicio - timedelta(days=5 * (n - 1))
         params = {
             'formato': 'json',
-            'dataInicial': inicio.strftime('%d/%m/%Y'),
+            'dataInicial': ini.strftime('%d/%m/%Y'),
             'dataFinal': fim.strftime('%d/%m/%Y')
         }
         try:
@@ -46,7 +46,7 @@ def extrair_serie(codigo):
     df = pd.DataFrame(linhas)
     df['serie_id'] = codigo
     df['data'] = pd.to_datetime(df['data'], format='%d/%m/%Y').dt.date
-    df = df[df['data'] >= date(ANO_INICIAL, 1, 1)]
+    df = df[df['data'] >= date(ANO_INICIAL, 1, 1)].copy()
     df['valor'] = pd.to_numeric(df['valor'])
     
     return df[['serie_id', 'data', 'valor']]

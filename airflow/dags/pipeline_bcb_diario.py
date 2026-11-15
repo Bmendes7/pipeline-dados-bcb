@@ -18,8 +18,8 @@ def avisar_falha(context):
     texto = (
         ':rotating_light: *Falha no pipeline BCB*\n'
         f'DAG: {ti.dag_id} | Task: {ti.task_id}\n'
-        f'Execução: {context.get('run_id')}\n'
-        f'Erro: {str(context.get('exception'))[:500]}'
+        f"Execução: {context.get('run_id')}\n"
+        f"Erro: {str(context.get('exception'))[:500]}"
     )
     url = os.getenv('ALERT_WEBHOOK_URL')
     if not url:
@@ -44,7 +44,7 @@ default_args = {
     tags=["bcb", "d2"]
 )
 def pipeline_bcb_diario():
-    @task(execution_timeout=timedelta(minutes=15))
+    @task(execution_timeout=timedelta(minutes=10))
     def extrair_e_carregar():
         sys.path.insert(0, f"{PROJECT_DIR}/extract")
         import load_bq
@@ -56,7 +56,7 @@ def pipeline_bcb_diario():
         bash_command=f"cd {DBT_DIR} && {DBT_BIN} seed && {DBT_BIN} run",
         env=DBT_ENV,
         append_env=True,
-        execution_timeout=timedelta(minutes=15)
+        execution_timeout=timedelta(minutes=5)
     )
     
     dbt_test = BashOperator(
@@ -64,6 +64,7 @@ def pipeline_bcb_diario():
         bash_command= f"cd {DBT_DIR} && {DBT_BIN} test",
         env= DBT_ENV,
         append_env= True,
+        retries=0,
         execution_timeout=timedelta(minutes=15)
     )
     

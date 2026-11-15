@@ -35,3 +35,17 @@ models:
                 field: data_id
       - name: valor
         data_tests: [not_null]
+  - name: mart_indicadores_mensais
+    description: Último valor do mês por série, com variação mensal e média móvel de 3 meses.
+    columns:
+      - name: serie_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_serie')
+                field: serie_id
+      - name: mes
+        data_tests: [not_null]
+      - name: ultimo_valor_mes
+        data_tests: [not_null]
