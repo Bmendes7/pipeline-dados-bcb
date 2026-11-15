@@ -1,0 +1,18 @@
+version: 2
+models:
+  - name: stg_bcb_series
+    description: Séries do SGS com tipos corretos, uma linha por série e data (origem raw.bcb_series).
+    columns:
+      - name: serie_id
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 432, 433]
+                quote: false
+      - name: data_referencia
+        data_tests: [not_null]
+      - name: valor
+        data_tests: [not_null]
+      - name: data_carga
+        data_tests: [not_null]

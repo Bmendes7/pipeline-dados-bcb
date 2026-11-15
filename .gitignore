@@ -17,3 +17,12 @@ logs/
 Thumbs.db
 .vscode/
 .idea/
+airflow/.env
+airflow/secrets/
+airflow/logs/
+dbt/target/
+dbt/logs/
+airflow/config/
+
+# docs
+docs/D2-airflow-pipeline-dados-bcb.md
