@@ -23,3 +23,6 @@ airflow/logs/
 dbt/target/
 dbt/logs/
 airflow/config/
+
+# docs
+docs/D2-airflow-pipeline-dados-bcb.md
